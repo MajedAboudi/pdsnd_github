@@ -138,15 +138,15 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # TO DO: display total travel time
     total_travel_time = df['Trip Duration'].sum(skipna=True)
-    print("Total Travel Time is: {}".format(total_travel_time))
-    # TO DO: display mean travel time
     mean_travel_time = df['Trip Duration'].mean(skipna=True)
-    print("Mean Travel Time is: {}".format(mean_travel_time))
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print(f"Total Travel Time: {total_travel_time}")
+    print(f"Mean Travel Time: {mean_travel_time}")
+
+    print(f"\nThis took {time.time() - start_time:.2f} seconds.")
+    print('-' * 40)
+
 
 
 def user_stats(df,city):
@@ -187,19 +187,19 @@ def user_stats(df,city):
     print('-'*40)
 
 def show_raw_data(df):
-
     """
-       Asks the user if they want to see raw data and displays 5 rows at a time.
+    Displays raw data in chunks of 5 rows upon user request.
 
-       Args:
-           df (DataFrame): the filtered dataset
-       """
-    display_data = input("\nWould you like to see 5 lines of raw data? Enter yes or no.\n").strip().lower()
+    Args:
+        df (DataFrame): The filtered dataset.
+    """
     cnt = 0
-    while display_data == 'yes':
+    while True:
+        display_data = input("\nWould you like to see 5 lines of raw data? Enter yes or no:\n").strip().lower()
+        if display_data != 'yes':
+            break
         print(df.iloc[cnt:cnt+5])
         cnt += 5
-        display_data = input("Would you like to see 5 more lines? Enter yes or no.\n").strip().lower()
 
 
 
