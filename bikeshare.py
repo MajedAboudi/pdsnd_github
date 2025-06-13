@@ -187,19 +187,19 @@ def user_stats(df,city):
     print('-'*40)
 
 def show_raw_data(df):
-
     """
-       Asks the user if they want to see raw data and displays 5 rows at a time.
+    Displays raw data in chunks of 5 rows upon user request.
 
-       Args:
-           df (DataFrame): the filtered dataset
-       """
-    display_data = input("\nWould you like to see 5 lines of raw data? Enter yes or no.\n").strip().lower()
+    Args:
+        df (DataFrame): The filtered dataset.
+    """
     cnt = 0
-    while display_data == 'yes':
+    while True:
+        display_data = input("\nWould you like to see 5 lines of raw data? Enter yes or no:\n").strip().lower()
+        if display_data != 'yes':
+            break
         print(df.iloc[cnt:cnt+5])
         cnt += 5
-        display_data = input("Would you like to see 5 more lines? Enter yes or no.\n").strip().lower()
 
 
 
