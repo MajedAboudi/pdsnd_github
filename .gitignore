@@ -1,3 +1,14 @@
 .github/**
-.data/**
-.data/chicago.csv
+# Ignore all CSV files in any directory
+*.csv
+
+# Ignore OS-specific system files
+.DS_Store
+
+# Bytecode and Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment folders
+venv/
+env/
